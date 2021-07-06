@@ -1,0 +1,24 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        maven {
+            name = "GitHub Packages"
+            url = uri("https://maven.pkg.github.com/sebeard/*")
+            credentials {
+                username = System.getenv("GITHUB_PACKAGES_USER")
+                password = System.getenv("GITHUB_PACKAGES_TOKEN")
+            }
+        }
+        gradlePluginPortal()
+        mavenCentral()
+    }
+
+    plugins {
+        id 'io.firefly.java-convention' version "${fireflyConventionsVersion}"
+        id 'io.firefly.project-convention' version "${fireflyConventionsVersion}"
+    }
+}
+
+rootProject.name = 'sample-project'
+include (':sample-parent-module:sample-sub-module')
+
